@@ -10,8 +10,10 @@ public class DeleteBoardTest extends BoardClient {
     public void deleteSpecificBoardTest() throws IOException {
         String boardName = "toRemoveBoard";
         Response response = createBoard(boardName);
+
+        String responseAsString = response.body().string();
         // Create board and get board ID to remove it in next step
-        String boardID = getValueFromJson("id", response);
+        String boardID = getValueFromJson("id", responseAsString);
         Assert.assertEquals(response.code(), 200);
 
         // remove new-created board

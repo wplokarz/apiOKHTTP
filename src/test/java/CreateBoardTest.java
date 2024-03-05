@@ -12,8 +12,13 @@ public class CreateBoardTest extends BoardClient {
         String boardName = "testowyboard1413";
         Response response = createBoard(boardName);
 
-        Assert.assertEquals(response.code(), 200);
-        Assert.assertEquals(getValueFromJson("name", response), boardName);
+        String responseAsString = response.body().string();
 
+        Assert.assertEquals(response.code(), 200);
+        Assert.assertEquals(getValueFromJson("name", responseAsString), boardName);
+
+        //clear test data
+        String boardID = getValueFromJson("id", responseAsString);
+        deleteBoard(boardID);
     }
 }

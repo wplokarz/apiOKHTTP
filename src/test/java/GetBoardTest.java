@@ -12,7 +12,9 @@ public class GetBoardTest extends BoardClient {
         String boardID = "658174cce75b456da0c7feaf";
         Response response = getBoard(boardID);
 
-        Assert.assertEquals(getValueFromJson("id", response), boardID);
+        String responseAsString = response.body().string();
+
+        Assert.assertEquals(getValueFromJson("id", responseAsString), boardID);
         Assert.assertEquals(response.code(), 200);
     }
 

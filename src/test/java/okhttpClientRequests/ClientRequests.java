@@ -42,9 +42,8 @@ public abstract class ClientRequests {
         return sendRequest("DELETE", url, null);
     }
 
-    public static String getValueFromJson(String value, Response response) throws IOException {
-        JsonObject jsonObject = JsonParser.parseString(response.body().string()).getAsJsonObject();
+    public static String getValueFromJson(String value, String response) {
+        JsonObject jsonObject = JsonParser.parseString(response).getAsJsonObject();
         return jsonObject.get(value).getAsString();
-
     }
 }
