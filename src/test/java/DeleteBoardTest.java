@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import okhttp3.Response;
 import okhttpClientRequests.BoardClient;
 import org.testng.Assert;
@@ -7,6 +8,7 @@ import java.io.IOException;
 
 public class DeleteBoardTest extends BoardClient {
     @Test
+    @Step("Deleting board")
     public void deleteSpecificBoardTest() throws IOException {
         String boardName = "toRemoveBoard";
         Response response = createBoard(boardName);
